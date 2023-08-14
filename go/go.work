@@ -3,6 +3,10 @@ go 1.20
 use (
 	./day-1
 	./day-2
-    ./day-3/Pt1
+  ./day-3/Pt1
 	./day-3/Pt2
+  ./day-4/Pt1
+  ./day-4/Pt2
+  ./day-5/Pt1
+  ./day-5/Pt2
 )
