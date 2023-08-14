@@ -28,19 +28,30 @@ func main() {
 	ttlPriority := 0
 
 	for scanner.Scan() {
-		items := make(map[rune]bool)
+		// Get the three elves items
+		elf1 := addItems(scanner.Text())
+		scanner.Scan()
+		elf2 := addItems(scanner.Text())
+		scanner.Scan()
+		elf3 := addItems(scanner.Text())
 
-		for _, i := range scanner.Text()[:len(scanner.Text())/2] {
-			items[i] = true
-		}
-
-		for _, i := range scanner.Text()[len(scanner.Text())/2:] {
-			if items[i] {
-				ttlPriority += itemTypePriority(i)
+		// Loop through elf 1 and see if its items are in both elfs
+		for key := range elf1 {
+			if elf2[key] && elf3[key] {
+				ttlPriority += itemTypePriority(key)
 				break
 			}
 		}
 	}
 	println(ttlPriority)
 
+}
+
+func addItems(items string) (set map[rune]bool) {
+	set = make(map[rune]bool)
+	for _, i := range items {
+		set[i] = true
+	}
+
+	return set
 }
